@@ -6,6 +6,9 @@ class App extends Component {
     return (
       <div>
         <h1>My boilerplate for React! </h1>
+        <div>
+          <p>Lorem ipsum ....</p>
+        </div>
       </div>
     );
   }
