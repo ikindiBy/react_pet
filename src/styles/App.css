@@ -6,3 +6,22 @@ h1 {
 div p {
   color: #2553b8;
 }
+
+.searchFrom {
+  width: 70%;
+  height: 100px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+header,
+main,
+footer {
+  width: 70%;
+  margin: 0 auto;
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+}
