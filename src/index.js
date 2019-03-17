@@ -1,11 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import "./styles/style.css";
+import "./styles/style.scss";
 
 import App from "./components/App.js";
-
-console.log("ww-w-w-w-w-w-w-w-w-w-w-w-w-w");
 
 const root = document.getElementById("root");
 
