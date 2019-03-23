@@ -1,0 +1,14 @@
+@import "./../styles/utils/vars.scss";
+@import "./../styles/utils/mixins.scss";
+
+main {
+  width: 100%;
+  background-color: $mainBgcColor;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main-wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
