@@ -3,19 +3,24 @@ import "./Tile.scss";
 
 class Tile extends Component {
   render() {
+    // console.log("=====", this.props);
+    const {
+      title,
+      poster_path,
+      genres,
+      vote_average,
+      release_date
+    } = this.props.film;
     return (
       <div className="poster-wrapper">
-        <img
-          src="https://image.tmdb.org/t/p/w500/veDMW7eX6tat86EapsvGEICJ8Tq.jpg"
-          alt=""
-        />
+        <img src={poster_path} alt="" />
         <div className="poster-info">
           <div className="poster-description">
-            <h4>Kill bill</h4>
-            <p>Action</p>
+            <h4>{title}</h4>
+            <p>{genres[0]}</p>
           </div>
           <div className="poster-date">
-            <span>1988</span>
+            <span>{release_date.slice(0, 4)}</span>
           </div>
         </div>
       </div>

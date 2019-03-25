@@ -11,13 +11,14 @@ class SearchForm extends Component {
   }
 
   handleChange(event) {
-    console.log("A ===>> " + this.state.value);
     this.setState({ value: event.target.value });
+    // console.log("A ===>> ", this.state.value, event.target.value);
   }
 
   handleSubmit(event) {
     console.log("A name was submitted: " + this.state.value);
     event.preventDefault();
+    this.props.setSearchingWord(this.state.value);
   }
 
   render() {

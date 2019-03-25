@@ -13,7 +13,7 @@ class Header extends Component {
           <div className="logo-line">
             <span>logo</span>
           </div>
-          <SearchForm />
+          <SearchForm setSearchingWord={this.props.setSearchingWord} />
         </div>
         <div className="resul-line">
           <div className="resul-line-wrapper">searcing result</div>
