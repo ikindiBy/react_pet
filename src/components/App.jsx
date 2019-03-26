@@ -1,40 +1,37 @@
 import React, { Component } from "react";
 import "./App.scss";
 
+import SEARCH_BY from "./../js/constants";
+
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
 import Footer from "./Footer.jsx";
 
-const SEARCH_BY = {
-  TITLE: "title",
-  GENRES: "genres"
-};
-
-const getRequestToAPI = (searchingWord, searchBy) => {
+const getRequestToAPI = (searchBy, searchingWord) => {
   return `https://reactjs-cdp.herokuapp.com/movies?search=${searchingWord}&searchBy=${searchBy}`;
 };
 
-let templateAnswer = {
-  data: [
-    {
-      id: 0,
-      title: "string",
-      tagline: "string",
-      vote_average: 0,
-      vote_count: 0,
-      release_date: "string",
-      poster_path: "string",
-      overview: "string",
-      budget: 0,
-      revenue: 0,
-      runtime: 0,
-      genres: ["string"]
-    }
-  ],
-  total: 0,
-  offset: 0,
-  limit: 0
-};
+// let templateAnswer = {
+//   data: [
+//     {
+//       id: 0,
+//       title: "string",
+//       tagline: "string",
+//       vote_average: 0,
+//       vote_count: 0,
+//       release_date: "string",
+//       poster_path: "string",
+//       overview: "string",
+//       budget: 0,
+//       revenue: 0,
+//       runtime: 0,
+//       genres: ["string"]
+//     }
+//   ],
+//   total: 0,
+//   offset: 0,
+//   limit: 0
+// };
 
 class App extends Component {
   constructor(props) {
@@ -48,18 +45,29 @@ class App extends Component {
     this.setSearchingWord = this.setSearchingWord.bind(this);
   }
 
-  setSearchingWord(word) {
-    console.log("_________", word);
-    console.log("_________>", this.state);
-    this.setState({ searchingWord: "word" });
+  // state = {
+  //   films: [],
+  //   // searchingWord: "",
+  //   searchBy: SEARCH_BY.TITLE
+  // };
 
-    console.log("_________", this.state);
+  setSearchingWord(searchBy, word) {
+    const requestToAPI = getRequestToAPI(searchBy, word);
+
+    fetch(requestToAPI)
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        this.setState({ films: data.data });
+      })
+      .catch(e => {});
   }
 
   componentDidMount() {
     const requestToAPI = getRequestToAPI(
-      this.state.searchingWord,
-      this.state.searchBy
+      this.state.searchBy,
+      this.state.searchingWord
     );
 
     fetch(requestToAPI)

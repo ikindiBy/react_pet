@@ -36,11 +36,14 @@ module.exports = {
         test: /\.jsx?$/,
         loader: "babel-loader",
         exclude: /node-modules/,
-        query: {
+        options: {
           presets: [
             "@babel/preset-env",
             "@babel/preset-react",
-            "@babel/preset-typescript"
+            "@babel/preset-typescript",
+            {
+              plugins: ["@babel/plugin-proposal-class-properties"]
+            }
           ]
         }
       },
