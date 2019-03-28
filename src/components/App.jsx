@@ -89,7 +89,7 @@ class App extends Component {
           quantity={this.state.data.total}
           filmForDesciption={this.state.data.data[0]}
         />
-        <DescriptionFilm film={this.state.data.data[0]} />
+        <DescriptionFilm film={this.state.data.data[8]} />
         <Main setFilms={this.state.data.data} />
         <Footer />
       </>

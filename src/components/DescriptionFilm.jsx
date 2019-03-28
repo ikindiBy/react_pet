@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./DescriptionFilm.scss";
+import AverageCircle from "./AverageCircle.jsx";
 
 class DescriptionFilm extends Component {
   render() {
@@ -12,7 +13,10 @@ class DescriptionFilm extends Component {
         tagline,
         overview,
         release_date
+        // runtime
       } = this.props.film;
+      let { runtime } = this.props.film;
+      runtime = 145;
 
       return (
         <div className="description">
@@ -23,12 +27,21 @@ class DescriptionFilm extends Component {
               alt="header_title"
               className="image-bgc"
             />
-            <img src={poster_path} alt="" className="image-tile" />
-            <div className="description-content">
-              <h1>{title}</h1>
-              <h4>{tagline}</h4>
-              <p>{release_date} </p>
-              <p>{overview} </p>
+            <div className="description-card">
+              <img src={poster_path} alt="" />
+              <div className="description-content">
+                <div className="title-average">
+                  <h1>{title}</h1>
+                  <AverageCircle average={vote_average} />
+                </div>
+
+                <h4>{tagline}</h4>
+                <div className="year-and-runtime">
+                  <p>{release_date.slice(0, 4)} </p>
+                  {runtime ? <p>{runtime} min</p> : ""}
+                </div>
+                <p>{overview} </p>
+              </div>
             </div>
           </div>
         </div>
