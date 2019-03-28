@@ -11,6 +11,7 @@ class Tile extends Component {
       vote_average,
       release_date
     } = this.props.film;
+
     return (
       <div className="poster-wrapper">
         <img src={poster_path} alt="" />

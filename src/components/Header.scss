@@ -17,7 +17,7 @@ header {
 }
 
 .header-wrapper,
-.resul-line-wrapper {
+.result-line-wrapper {
   @include size(80%, 100%);
   margin: 0 auto;
 }
@@ -38,8 +38,17 @@ header {
   }
 }
 
-.resul-line-wrapper {
-  height: 20%;
+.result-line-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.result-line-filter {
+  span {
+    margin-left: 20px;
+  }
 }
 
 .bgc-fill {
@@ -80,7 +89,7 @@ header {
   }
 }
 
-.resul-line {
+.result-line {
   @include size(100%, 20%);
   background-color: $mainContrAccentColor;
   color: $mainAccentColor;

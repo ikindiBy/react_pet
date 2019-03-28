@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./Header.scss";
 
 import SearchForm from "./SearchForm.jsx";
+import ResultLine from "./ResultLine.jsx";
+import DescriptionFilm from "./DescriptionFilm.jsx";
 
 class Header extends Component {
   render() {
@@ -15,9 +17,8 @@ class Header extends Component {
           </div>
           <SearchForm setSearchingWord={this.props.setSearchingWord} />
         </div>
-        <div className="resul-line">
-          <div className="resul-line-wrapper">searcing result</div>
-        </div>
+        {/* <DescriptionFilm film={this.props.filmForDesciption} /> */}
+        <ResultLine quantity={this.props.quantity} />
       </header>
     );
   }

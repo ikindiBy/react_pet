@@ -9,26 +9,20 @@ class SearchForm extends Component {
       value: "",
       selectedOption: SEARCH_BY.TITLE
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({ value: event.target.value });
-    // console.log("A ===>> ", this.state.value, event.target.value);
-  }
+  };
 
-  handleOptionChange(event) {
+  handleOptionChange = event => {
     this.setState({ selectedOption: event.target.value });
-  }
+  };
 
-  handleSubmit(event) {
-    console.log("A name was submitted: " + this.state.value);
+  handleSubmit = event => {
     event.preventDefault();
     this.props.setSearchingWord(this.state.selectedOption, this.state.value);
-  }
+  };
 
   render() {
     return (

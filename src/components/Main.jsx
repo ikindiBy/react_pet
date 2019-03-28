@@ -6,20 +6,17 @@ import Tile from "./Tile.jsx";
 class Main extends Component {
   constructor(props) {
     super(props);
-
-    this.showFilms = this.showFilms.bind(this);
-    this.hideElement = this.hideElement.bind(this);
   }
 
-  hideElement() {
+  hideElement = () => {
     return this.props.setFilms ? true : false;
-  }
+  };
 
-  showFilms(setFilms) {
+  showFilms = setFilms => {
     return setFilms.map(item => {
       return <Tile key={item.id} film={item} />;
     });
-  }
+  };
 
   render() {
     return (

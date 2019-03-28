@@ -6,6 +6,7 @@ import SEARCH_BY from "./../js/constants";
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
 import Footer from "./Footer.jsx";
+import DescriptionFilm from "./DescriptionFilm.jsx";
 
 const getRequestToAPI = (searchBy, searchingWord) => {
   return `https://reactjs-cdp.herokuapp.com/movies?search=${searchingWord}&searchBy=${searchBy}`;
@@ -37,12 +38,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      films: [],
+      data: {
+        data: []
+      },
       searchingWord: "",
       searchBy: SEARCH_BY.TITLE
     };
-
-    this.setSearchingWord = this.setSearchingWord.bind(this);
   }
 
   // state = {
@@ -51,7 +52,7 @@ class App extends Component {
   //   searchBy: SEARCH_BY.TITLE
   // };
 
-  setSearchingWord(searchBy, word) {
+  setSearchingWord = (searchBy, word) => {
     const requestToAPI = getRequestToAPI(searchBy, word);
 
     fetch(requestToAPI)
@@ -59,10 +60,10 @@ class App extends Component {
         return results.json();
       })
       .then(data => {
-        this.setState({ films: data.data });
+        this.setState({ data: data });
       })
       .catch(e => {});
-  }
+  };
 
   componentDidMount() {
     const requestToAPI = getRequestToAPI(
@@ -75,7 +76,7 @@ class App extends Component {
         return results.json();
       })
       .then(data => {
-        this.setState({ films: data.data });
+        this.setState({ data: data });
       })
       .catch(e => {});
   }
@@ -83,8 +84,13 @@ class App extends Component {
   render() {
     return (
       <>
-        <Header setSearchingWord={this.setSearchingWord} />
-        <Main setFilms={this.state.films} />
+        <Header
+          setSearchingWord={this.setSearchingWord}
+          quantity={this.state.data.total}
+          filmForDesciption={this.state.data.data[0]}
+        />
+        <DescriptionFilm film={this.state.data.data[0]} />
+        <Main setFilms={this.state.data.data} />
         <Footer />
       </>
     );
