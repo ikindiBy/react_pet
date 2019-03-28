@@ -2,37 +2,13 @@ import React, { Component } from "react";
 import "./App.scss";
 
 import SEARCH_BY from "./../js/constants";
+import { getRequestToAPI } from "./../js/helpers";
 
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
 import Footer from "./Footer.jsx";
 import DescriptionFilm from "./DescriptionFilm.jsx";
-
-const getRequestToAPI = (searchBy, searchingWord) => {
-  return `https://reactjs-cdp.herokuapp.com/movies?search=${searchingWord}&searchBy=${searchBy}`;
-};
-
-// let templateAnswer = {
-//   data: [
-//     {
-//       id: 0,
-//       title: "string",
-//       tagline: "string",
-//       vote_average: 0,
-//       vote_count: 0,
-//       release_date: "string",
-//       poster_path: "string",
-//       overview: "string",
-//       budget: 0,
-//       revenue: 0,
-//       runtime: 0,
-//       genres: ["string"]
-//     }
-//   ],
-//   total: 0,
-//   offset: 0,
-//   limit: 0
-// };
+import ErrorBoundary from "./ErrorBoundary.jsx";
 
 class App extends Component {
   constructor(props) {
@@ -83,7 +59,7 @@ class App extends Component {
 
   render() {
     return (
-      <>
+      <ErrorBoundary>
         <Header
           setSearchingWord={this.setSearchingWord}
           quantity={this.state.data.total}
@@ -92,7 +68,7 @@ class App extends Component {
         <DescriptionFilm film={this.state.data.data[8]} />
         <Main setFilms={this.state.data.data} />
         <Footer />
-      </>
+      </ErrorBoundary>
     );
   }
 }
