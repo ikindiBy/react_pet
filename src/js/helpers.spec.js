@@ -1,11 +1,7 @@
 import { getRequestToAPI, getReleaseYear, getGenres } from "./helpers";
 import { STUB_DATA } from "./../js/constants";
 
-// jest.mock("uuid", () => ({
-//   v1: () => Math.random()
-// }));
-
-describe("ReleaseYear", () => {
+describe("ReleaseYear ", () => {
   it("should have correct format date", () => {
     const dateFromAPI = "2019-01-21";
     const year = "2019";
@@ -14,7 +10,7 @@ describe("ReleaseYear", () => {
   });
 });
 
-describe("Genres", () => {
+describe("Genres ", () => {
   it("should have correct string of genres as result", () => {
     const genresFromAPI = ["Aa", "Vee"];
     const strGenres = "Aa, Vee";

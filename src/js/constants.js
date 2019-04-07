@@ -5,4 +5,6 @@ const SEARCH_BY = {
 
 const STUB_DATA = "unknown";
 
-export { SEARCH_BY, STUB_DATA };
+const CURRENT_YEAR = 2019;
+
+export { SEARCH_BY, STUB_DATA, CURRENT_YEAR };

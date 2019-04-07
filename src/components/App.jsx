@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./App.scss";
 
-import { SEARCH_BY } from "./../js/constants";
+import { SEARCH_BY, CURRENT_YEAR } from "./../js/constants";
 import { getRequestToAPI } from "./../js/helpers";
 
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
-import Footer from "./Footer.jsx";
+import Footer from "./Footer/Footer.jsx";
 import DescriptionFilm from "./DescriptionFilm.jsx";
 import ErrorBoundary from "./ErrorBoundary.jsx";
 
@@ -67,7 +67,7 @@ class App extends Component {
         />
         <DescriptionFilm film={this.state.data.data[8]} />
         <Main setFilms={this.state.data.data} />
-        <Footer />
+        <Footer year={CURRENT_YEAR} />
       </ErrorBoundary>
     );
   }
