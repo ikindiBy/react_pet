@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./SearchForm.scss";
-import SEARCH_BY from "./../js/constants";
+import { SEARCH_BY } from "../../js/constants";
 
 class SearchForm extends Component {
   constructor(props) {

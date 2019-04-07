@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./DescriptionFilm.scss";
 import AverageCircle from "./AverageCircle.jsx";
+import { getReleaseYear } from "./../js/helpers";
 
 class DescriptionFilm extends Component {
   render() {
@@ -37,7 +38,7 @@ class DescriptionFilm extends Component {
 
                 <h4>{tagline}</h4>
                 <div className="year-and-runtime">
-                  <p>{release_date.slice(0, 4)} </p>
+                  <p>{getReleaseYear(release_date)} </p>
                   {runtime ? <p>{runtime} min</p> : ""}
                 </div>
                 <p>{overview} </p>

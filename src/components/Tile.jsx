@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./Tile.scss";
 
+import { getReleaseYear, getGenres } from "./../js/helpers";
+
 class Tile extends Component {
   render() {
-    // console.log("=====", this.props);
     const {
       title,
       poster_path,
@@ -18,10 +19,10 @@ class Tile extends Component {
         <div className="poster-info">
           <div className="poster-description">
             <h4>{title}</h4>
-            <p>{genres[0]}</p>
+            <p>{getGenres(genres)}</p>
           </div>
           <div className="poster-date">
-            <span>{release_date.slice(0, 4)}</span>
+            <span>{getReleaseYear(release_date)}</span>
           </div>
         </div>
       </div>

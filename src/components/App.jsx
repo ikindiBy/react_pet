@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.scss";
 
-import SEARCH_BY from "./../js/constants";
+import { SEARCH_BY } from "./../js/constants";
 import { getRequestToAPI } from "./../js/helpers";
 
 import Header from "./Header.jsx";

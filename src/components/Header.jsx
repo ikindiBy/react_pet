@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Header.scss";
 
-import SearchForm from "./SearchForm.jsx";
+import SearchForm from "./SearchForm/SearchForm.jsx";
 import ResultLine from "./ResultLine.jsx";
 import DescriptionFilm from "./DescriptionFilm.jsx";
 
