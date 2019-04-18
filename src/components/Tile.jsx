@@ -4,6 +4,10 @@ import "./Tile.scss";
 import { getReleaseYear, getGenres } from "./../js/helpers";
 
 class Tile extends Component {
+  handleClick = () => {
+    this.props.setFilmForDescription(this.props.film);
+  };
+
   render() {
     const {
       title,
@@ -14,7 +18,7 @@ class Tile extends Component {
     } = this.props.film;
 
     return (
-      <div className="poster-wrapper">
+      <div className="poster-wrapper" onClick={this.handleClick}>
         <img src={poster_path} alt="" />
         <div className="poster-info">
           <div className="poster-description">

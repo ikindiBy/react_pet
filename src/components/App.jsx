@@ -14,21 +14,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      word: "",
       data: {
         data: []
       },
       searchingWord: "",
-      searchBy: SEARCH_BY.TITLE
+      searchBy: SEARCH_BY.TITLE,
+      describedFilm: {},
+      page: 1
     };
   }
 
-  // state = {
-  //   films: [],
-  //   // searchingWord: "",
-  //   searchBy: SEARCH_BY.TITLE
-  // };
-
   setSearchingWord = (searchBy, word) => {
+    this.setState({ word });
     const requestToAPI = getRequestToAPI(searchBy, word);
 
     fetch(requestToAPI)
@@ -36,9 +34,34 @@ class App extends Component {
         return results.json();
       })
       .then(data => {
+        console.log(data);
         this.setState({ data: data });
       })
       .catch(e => {});
+  };
+
+  setDescribedFilm = describedFilm => {
+    this.setState({ describedFilm });
+  };
+
+  showFilmsByPage = page => {
+    console.log("-----page = ", page);
+    // if (this.state.data.total / 10 > page) {
+    const requestToAPI = getRequestToAPI(
+      this.state.searchBy,
+      this.state.word,
+      page
+    );
+    fetch(requestToAPI)
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        console.log(data);
+        this.setState({ data: data });
+      })
+      .catch(e => {});
+    // }
   };
 
   componentDidMount() {
@@ -65,8 +88,13 @@ class App extends Component {
           quantity={this.state.data.total}
           filmForDesciption={this.state.data.data[0]}
         />
-        <DescriptionFilm film={this.state.data.data[8]} />
-        <Main setFilms={this.state.data.data} />
+        <DescriptionFilm film={this.state.describedFilm} />
+        <Main
+          quantity={this.state.data.total}
+          setFilmForDescription={this.setDescribedFilm}
+          setFilms={this.state.data.data}
+          showFilmsByPage={this.showFilmsByPage}
+        />
         <Footer year={CURRENT_YEAR} />
       </ErrorBoundary>
     );

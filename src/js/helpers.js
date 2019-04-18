@@ -1,7 +1,7 @@
 import { STUB_DATA } from "./constants";
 
-const getRequestToAPI = (searchBy, searchingWord) => {
-  return `https://reactjs-cdp.herokuapp.com/movies?search=${searchingWord}&searchBy=${searchBy}`;
+const getRequestToAPI = (searchBy, searchingWord, page = 1) => {
+  return `https://reactjs-cdp.herokuapp.com/movies?search=${searchingWord}&searchBy=${searchBy}&offset=${page}`;
 };
 
 const getReleaseYear = deteFromAPI => {

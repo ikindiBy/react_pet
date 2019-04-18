@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Main.scss";
 
 import Tile from "./Tile.jsx";
+import Pagination from "./Pagination/Pagination";
 
 class Main extends Component {
   constructor(props) {
@@ -14,8 +15,18 @@ class Main extends Component {
 
   showFilms = setFilms => {
     return setFilms.map(item => {
-      return <Tile key={item.id} film={item} />;
+      return (
+        <Tile
+          key={item.id}
+          film={item}
+          setFilmForDescription={this.props.setFilmForDescription}
+        />
+      );
     });
+  };
+
+  showFilmsByPage = () => {
+    // this.props.showNextPage(3);
   };
 
   render() {
@@ -25,6 +36,10 @@ class Main extends Component {
           <h1 hidden={this.hideElement()}>No films found</h1>
           {this.showFilms(this.props.setFilms)}
         </div>
+        <Pagination
+          amount={this.props.quantity}
+          showFilmsByPage={this.props.showFilmsByPage}
+        />
       </main>
     );
   }
