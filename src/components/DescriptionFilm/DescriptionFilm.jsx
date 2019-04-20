@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import "./DescriptionFilm.scss";
-import AverageCircle from "./AverageCircle.jsx";
-import { getReleaseYear } from "./../js/helpers";
+import AverageCircle from "../AverageCircle.jsx";
+import { getReleaseYear } from "../../js/helpers";
 import { stringTypeAnnotation } from "@babel/types";
 
 class DescriptionFilm extends Component {

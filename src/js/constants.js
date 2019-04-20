@@ -7,6 +7,8 @@ const STUB_DATA = "unknown";
 
 const CURRENT_YEAR = 2019;
 
-const LIMIT_SEARCHING = 10;
+const LIMIT_SEARCHING = 12;
 
-export { SEARCH_BY, STUB_DATA, CURRENT_YEAR, LIMIT_SEARCHING };
+const URL_API = "https://reactjs-cdp.herokuapp.com";
+
+export { SEARCH_BY, STUB_DATA, CURRENT_YEAR, LIMIT_SEARCHING, URL_API };

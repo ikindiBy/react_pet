@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Header.scss";
+import "./ResultLine.scss";
 
 class ResultLine extends Component {
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Tile.scss";
 
-import { getReleaseYear, getGenres } from "./../js/helpers";
+import { getReleaseYear, getGenres } from "../../js/helpers";
 
 class Tile extends Component {
   handleClick = () => {

@@ -4,10 +4,10 @@ import "./App.scss";
 import { SEARCH_BY, CURRENT_YEAR } from "./../js/constants";
 import { getRequestToAPI } from "./../js/helpers";
 
-import Header from "./Header.jsx";
-import Main from "./Main.jsx";
+import Header from "./Header/Header.jsx";
+import Main from "./Main/Main.jsx";
 import Footer from "./Footer/Footer.jsx";
-import DescriptionFilm from "./DescriptionFilm.jsx";
+import DescriptionFilm from "./DescriptionFilm/DescriptionFilm.jsx";
 import ErrorBoundary from "./ErrorBoundary.jsx";
 
 class App extends Component {
@@ -34,7 +34,6 @@ class App extends Component {
         return results.json();
       })
       .then(data => {
-        console.log(data);
         this.setState({ data: data });
       })
       .catch(e => {});
@@ -45,8 +44,6 @@ class App extends Component {
   };
 
   showFilmsByPage = page => {
-    console.log("-----page = ", page);
-    // if (this.state.data.total / 10 > page) {
     const requestToAPI = getRequestToAPI(
       this.state.searchBy,
       this.state.word,
@@ -57,11 +54,9 @@ class App extends Component {
         return results.json();
       })
       .then(data => {
-        console.log(data);
         this.setState({ data: data });
       })
       .catch(e => {});
-    // }
   };
 
   componentDidMount() {
@@ -72,6 +67,10 @@ class App extends Component {
 
     fetch(requestToAPI)
       .then(results => {
+        if (!results.ok) {
+          console.log(" ----------- ERROR ---->>> ");
+        }
+
         return results.json();
       })
       .then(data => {

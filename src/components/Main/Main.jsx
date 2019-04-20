@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Main.scss";
 
-import Tile from "./Tile.jsx";
-import Pagination from "./Pagination/Pagination";
+import Tile from "../Tile/Tile.jsx";
+import Pagination from "../Pagination/Pagination";
 
 class Main extends Component {
   constructor(props) {
@@ -23,10 +23,6 @@ class Main extends Component {
         />
       );
     });
-  };
-
-  showFilmsByPage = () => {
-    // this.props.showNextPage(3);
   };
 
   render() {

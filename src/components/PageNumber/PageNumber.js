@@ -12,6 +12,7 @@ class PageNumber extends Component {
   handleClick = event => {
     this.setState({ chosen: !this.state.chosen });
     // there could be used  "event.target.textContent" but it is a string and simpler solve below
+    this.props.setCurrentPage(this.props.content);
     this.props.showFilmsByPage(this.props.content);
   };
 

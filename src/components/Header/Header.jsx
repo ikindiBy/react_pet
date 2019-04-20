@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "./Header.scss";
 
-import SearchForm from "./SearchForm/SearchForm.jsx";
-import ResultLine from "./ResultLine.jsx";
-import DescriptionFilm from "./DescriptionFilm.jsx";
+import SearchForm from "../SearchForm/SearchForm.jsx";
+import ResultLine from "../ResultLine/ResultLine.jsx";
 
 class Header extends Component {
   render() {
@@ -17,7 +16,6 @@ class Header extends Component {
           </div>
           <SearchForm setSearchingWord={this.props.setSearchingWord} />
         </div>
-        {/* <DescriptionFilm film={this.props.filmForDesciption} /> */}
         <ResultLine quantity={this.props.quantity} />
       </header>
     );

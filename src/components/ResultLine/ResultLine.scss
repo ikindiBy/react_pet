@@ -1,0 +1,27 @@
+@import "./../../styles/utils/vars.scss";
+@import "./../../styles/utils/mixins.scss";
+
+.result-line-wrapper {
+  @include size(80%, 100%);
+  margin: 0 auto;
+}
+
+.result-line-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.result-line-filter {
+  span {
+    margin-left: 20px;
+  }
+}
+
+.result-line {
+  @include size(100%, 20%);
+  background-color: $mainContrAccentColor;
+  color: $mainAccentColor;
+  text-align: center;
+}

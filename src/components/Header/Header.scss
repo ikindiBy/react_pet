@@ -1,5 +1,5 @@
-@import "./../styles/utils/vars.scss";
-@import "./../styles/utils/mixins.scss";
+@import "./../../styles/utils/vars.scss";
+@import "./../../styles/utils/mixins.scss";
 
 header {
   @include size(100%, 210px);
@@ -16,8 +16,7 @@ header {
   }
 }
 
-.header-wrapper,
-.result-line-wrapper {
+.header-wrapper {
   @include size(80%, 100%);
   margin: 0 auto;
 }
@@ -35,19 +34,6 @@ header {
     position: absolute;
     z-index: 10;
     top: 10px;
-  }
-}
-
-.result-line-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.result-line-filter {
-  span {
-    margin-left: 20px;
   }
 }
 
@@ -87,11 +73,4 @@ header {
   button {
     margin-left: 2%;
   }
-}
-
-.result-line {
-  @include size(100%, 20%);
-  background-color: $mainContrAccentColor;
-  color: $mainAccentColor;
-  text-align: center;
 }

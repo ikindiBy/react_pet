@@ -1,7 +1,7 @@
-import { STUB_DATA } from "./constants";
+import { URL_API, STUB_DATA, LIMIT_SEARCHING } from "./constants";
 
 const getRequestToAPI = (searchBy, searchingWord, page = 1) => {
-  return `https://reactjs-cdp.herokuapp.com/movies?search=${searchingWord}&searchBy=${searchBy}&offset=${page}`;
+  return `${URL_API}/movies?limit=${LIMIT_SEARCHING}&search=${searchingWord}&searchBy=${searchBy}&offset=${page}`;
 };
 
 const getReleaseYear = deteFromAPI => {
