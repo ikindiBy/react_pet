@@ -48,9 +48,7 @@ class DescriptionFilm extends Component {
               <img src={poster_path} alt="" />
               <div className="description-content">
                 <div className="title-average">
-                  <h1>
-                    {title} {this.props.user}
-                  </h1>
+                  <h1>{title}</h1>
                   <AverageCircle average={vote_average} />
                 </div>
 
@@ -74,7 +72,7 @@ class DescriptionFilm extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.filmsManager.user
+    //   user: state.filmsManager.user
   };
 }
 

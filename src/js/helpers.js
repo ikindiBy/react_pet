@@ -1,6 +1,19 @@
-import { URL_API, STUB_DATA, LIMIT_SEARCHING } from "./constants";
+import { SEARCH_BY, URL_API, STUB_DATA, LIMIT_SEARCHING } from "./constants";
 
-const getRequestToAPI = (searchBy, searchingWord, page = 1) => {
+const getUrlForRequest = (
+  searchBy = SEARCH_BY.TITLE,
+  searchingWord,
+  sortBy,
+  page = 1
+) => {
+  if (!searchingWord) {
+    return undefined;
+  }
+
+  if (sortBy) {
+    return `${URL_API}/movies?sortBy=${sortBy}&sortOrder=desc&limit=${LIMIT_SEARCHING}&search=${searchingWord}&searchBy=${searchBy}&offset=${page}`;
+  }
+
   return `${URL_API}/movies?limit=${LIMIT_SEARCHING}&search=${searchingWord}&searchBy=${searchBy}&offset=${page}`;
 };
 
@@ -22,4 +35,4 @@ const getGenres = genresFromAPI => {
   return STUB_DATA;
 };
 
-export { getRequestToAPI, getReleaseYear, getGenres };
+export { getUrlForRequest, getReleaseYear, getGenres };

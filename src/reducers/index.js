@@ -1,8 +1,11 @@
 import { combineReducers } from "redux";
-import filmsManager from "./filmsManager";
 
-const rootReducer = combineReducers({
-  filmsManager
+import { films } from "./films";
+import { search } from "./searchReducers";
+import { filter } from "./filterReducer";
+
+export default combineReducers({
+  films,
+  search,
+  filter
 });
-
-export default rootReducer;

@@ -1,6 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./SearchForm.scss";
 import { SEARCH_BY } from "../../js/constants";
+import {
+  setSearchingParams,
+  showMessageEmptyParams
+} from "../../actions/searchingAction";
+import { filmsFetchData } from "../../actions/filmsAction";
+
+import { getUrlForRequest } from "../../js/helpers";
 
 class SearchForm extends Component {
   constructor(props) {
@@ -21,7 +29,21 @@ class SearchForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.setSearchingWord(this.state.selectedOption, this.state.value);
+
+    if (this.state.value) {
+      const urlForRequest = getUrlForRequest(
+        this.state.selectedOption,
+        this.state.value
+      );
+
+      this.props.fetchData(urlForRequest);
+
+      this.props.setSearchingWord(this.state.selectedOption, this.state.value);
+
+      this.setState({ value: "" });
+    } else {
+      this.props.showMessageEmptyParams();
+    }
   };
 
   render() {
@@ -44,7 +66,7 @@ class SearchForm extends Component {
                 value={SEARCH_BY.TITLE}
                 checked={this.state.selectedOption === SEARCH_BY.TITLE}
                 onChange={this.handleOptionChange}
-              />{" "}
+              />
               Title
             </label>
             <label className="radio">
@@ -54,7 +76,7 @@ class SearchForm extends Component {
                 value={SEARCH_BY.GENRE}
                 checked={this.state.selectedOption === SEARCH_BY.GENRE}
                 onChange={this.handleOptionChange}
-              />{" "}
+              />
               Genre
             </label>
           </div>
@@ -65,4 +87,22 @@ class SearchForm extends Component {
   }
 }
 
-export default SearchForm;
+function mapStateToProps(state) {
+  return {
+    searchingWord: state.searchingWord,
+    searchingType: state.searchingType
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchData: url => dispatch(filmsFetchData(url)),
+    setSearchingWord: (word, type) => dispatch(setSearchingParams(word, type)),
+    showMessageEmptyParams: () => dispatch(showMessageEmptyParams())
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchForm);

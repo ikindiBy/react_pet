@@ -31,7 +31,7 @@ class Pagination extends Component {
   };
 
   render() {
-    console.log("----------------= ", this.props.currentPage);
+    // console.log("----------------= ", this.props.currentPage);
     return (
       <div className="pagination">{this.showPages(this.props.amount)}</div>
     );
@@ -40,7 +40,7 @@ class Pagination extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentPage: state.filmsManager.currentPage
+    // currentPage: state.filmsManager.currentPage
   };
 }
 

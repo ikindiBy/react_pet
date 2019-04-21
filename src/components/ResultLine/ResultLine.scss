@@ -17,6 +17,12 @@
   span {
     margin-left: 20px;
   }
+  .actual {
+    border-bottom: 1px solid $mainAccentColor;
+  }
+  .not-actual {
+    border-bottom: 1px solid $mainContrAccentColor;
+  }
 }
 
 .result-line {

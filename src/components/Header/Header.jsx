@@ -14,9 +14,9 @@ class Header extends Component {
           <div className="logo-line">
             <span>logo</span>
           </div>
-          <SearchForm setSearchingWord={this.props.setSearchingWord} />
+          <SearchForm />
         </div>
-        <ResultLine quantity={this.props.quantity} />
+        <ResultLine />
       </header>
     );
   }
