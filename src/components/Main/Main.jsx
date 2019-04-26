@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./Main.scss";
@@ -8,6 +9,18 @@ import Tile from "../Tile/Tile.jsx";
 import Pagination from "../Pagination/Pagination";
 
 import { filmsFetchData } from "../../actions/filmsAction";
+
+const EmptyParams = () => (
+  <div>
+    <h1> Type more specific parameters of searching. </h1>
+  </div>
+);
+
+const NoFilms = () => (
+  <div>
+    <h1> No films found </h1>
+  </div>
+);
 
 class Main extends Component {
   constructor(props) {
@@ -19,14 +32,12 @@ class Main extends Component {
     };
   }
 
-  showFilms = setFilms => {
-    return setFilms.map(item => {
+  showFilms = props => {
+    return props.setFilms.map(item => {
       return (
-        <Tile
-          key={item.id}
-          film={item}
-          setFilmForDescription={this.props.setFilmForDescription}
-        />
+        <Link to={`/description/${item.id}`} key={item.id}>
+          <Tile film={item} />
+        </Link>
       );
     });
   };
@@ -43,7 +54,7 @@ class Main extends Component {
           >
             No films found
           </h1>
-          {this.showFilms(this.props.setFilms)}
+          {this.showFilms(this.props)}
         </div>
         <Pagination
           amount={this.props.quantity}

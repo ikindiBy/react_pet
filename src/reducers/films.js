@@ -16,10 +16,22 @@
 //   }
 // ],
 
-export function films(state = { filmsSet: [], total: 0 }, action) {
+export function films(
+  state = { filmsSet: [], total: 0, idForDP: null },
+  action
+) {
   switch (action.type) {
     case "FILMS_FETCH_DATA_SUCCESS":
-      return { filmsSet: action.payload.data, total: action.payload.total };
+      return {
+        ...state,
+        filmsSet: action.payload.data,
+        total: action.payload.total
+      };
+    case "SET_ID_FOR_DP":
+      return {
+        ...state,
+        idForDP: action.payload.id
+      };
     default:
       return state;
   }

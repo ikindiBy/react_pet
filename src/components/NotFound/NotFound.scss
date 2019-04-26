@@ -1,0 +1,13 @@
+@import "./../../styles/utils/vars.scss";
+@import "./../../styles/utils/mixins.scss";
+
+.notFound {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  color: $mainAccentColor;
+  h1 {
+    margin: 0 auto;
+    text-align: center;
+  }
+}

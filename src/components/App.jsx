@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+// import createBrowserHistory from "history/createBrowserHistory";
+
 import "./App.scss";
 
 import { CURRENT_YEAR } from "./../js/constants";
@@ -6,21 +9,27 @@ import { CURRENT_YEAR } from "./../js/constants";
 import Header from "./Header/Header.jsx";
 import Main from "./Main/Main.jsx";
 import Footer from "./Footer/Footer.jsx";
-import DescriptionFilm from "./DescriptionFilm/DescriptionFilm.jsx";
 import ErrorBoundary from "./ErrorBoundary.jsx";
+import NotFound from "./NotFound/NotFound";
+
+// const history = createBrowserHistory();
+
+const Home = () => (
+  <>
+    <Header />
+    <Main />
+    {/* <Main showFilmsByPage={this.showFilmsByPage} /> rewrite for pagination */}
+    <Footer year={CURRENT_YEAR} />
+  </>
+);
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      describedFilm: {},
       page: 1
     };
   }
-
-  setDescribedFilm = describedFilm => {
-    this.setState({ describedFilm });
-  };
 
   showFilmsByPage = page => {
     const requestToAPI = getRequestToAPI(
@@ -41,13 +50,16 @@ class App extends Component {
   render() {
     return (
       <ErrorBoundary>
-        <Header />
-        <DescriptionFilm film={this.state.describedFilm} />
-        <Main
-          setFilmForDescription={this.setDescribedFilm}
-          showFilmsByPage={this.showFilmsByPage}
-        />
-        <Footer year={CURRENT_YEAR} />
+        <BrowserRouter>
+          {/* <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="*" component={NotFound} />
+          </Switch> */}
+          <Header />
+          <Main />
+          {/* <Main showFilmsByPage={this.showFilmsByPage} /> rewrite for pagination */}
+          <Footer year={CURRENT_YEAR} />
+        </BrowserRouter>
       </ErrorBoundary>
     );
   }

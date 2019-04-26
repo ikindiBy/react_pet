@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import "./DescriptionFilm.scss";
 import AverageCircle from "../AverageCircle.jsx";
-import { getReleaseYear } from "../../js/helpers";
+import { getReleaseYear, normalizeId } from "../../js/helpers";
 import { stringTypeAnnotation } from "@babel/types";
 
 class DescriptionFilm extends Component {
@@ -22,8 +22,15 @@ class DescriptionFilm extends Component {
     return genresString;
   };
 
+  getFilmForDP = () => {
+    return this.props.setFilms.find(
+      film => normalizeId(film.id) === normalizeId(this.props.match.params.id)
+    );
+  };
+
   render() {
-    if (this.props.film) {
+    const filmForDP = this.getFilmForDP();
+    if (filmForDP) {
       let {
         title,
         poster_path,
@@ -33,7 +40,7 @@ class DescriptionFilm extends Component {
         overview,
         release_date,
         runtime
-      } = this.props.film;
+      } = filmForDP;
 
       return (
         <div className="description">
@@ -72,9 +79,8 @@ class DescriptionFilm extends Component {
 
 function mapStateToProps(state) {
   return {
-    //   user: state.filmsManager.user
+    setFilms: state.films.filmsSet
   };
 }
 
-// export default DescriptionFilm;
 export default connect(mapStateToProps)(DescriptionFilm);

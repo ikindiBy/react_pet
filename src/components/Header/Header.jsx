@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Route, Switch, Link } from "react-router-dom";
 import "./Header.scss";
 
 import SearchForm from "../SearchForm/SearchForm.jsx";
 import ResultLine from "../ResultLine/ResultLine.jsx";
+import DescriptionFilm from "../DescriptionFilm/DescriptionFilm.jsx";
 
 class Header extends Component {
   render() {
@@ -13,8 +15,12 @@ class Header extends Component {
           <img src="/assets/img/header2.jpg" alt="header_title" />
           <div className="logo-line">
             <span>logo</span>
+            <Link to="/">Home</Link>
           </div>
-          <SearchForm />
+          <Switch>
+            <Route exact path="/" component={SearchForm} />
+            <Route path="/description/:id" component={DescriptionFilm} />
+          </Switch>
         </div>
         <ResultLine />
       </header>

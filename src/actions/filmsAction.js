@@ -5,6 +5,13 @@ export function filmsFetchDataSuccess(data) {
   };
 }
 
+export function setIdForDP(id) {
+  return {
+    type: "SET_ID_FOR_DP",
+    payload: id
+  };
+}
+
 export function filmsFetchData(url) {
   return dispatch => {
     fetch(url)

@@ -35,4 +35,8 @@ const getGenres = genresFromAPI => {
   return STUB_DATA;
 };
 
-export { getUrlForRequest, getReleaseYear, getGenres };
+const normalizeId = id => {
+  return +id;
+};
+
+export { getUrlForRequest, getReleaseYear, getGenres, normalizeId };
