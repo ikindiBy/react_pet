@@ -11,7 +11,6 @@ import Main from "./Main/Main.jsx";
 import Footer from "./Footer/Footer.jsx";
 import ErrorBoundary from "./ErrorBoundary.jsx";
 import NotFound from "./NotFound/NotFound";
-
 // const history = createBrowserHistory();
 
 const Home = () => (
@@ -51,14 +50,22 @@ class App extends Component {
     return (
       <ErrorBoundary>
         <BrowserRouter>
-          {/* <Switch>
-            <Route exact path="/" component={Home} />
+          <Switch>
+            <Route exact path="/" component={Header} />
+            <Route path="/description" component={Header} />
             <Route path="*" component={NotFound} />
-          </Switch> */}
-          <Header />
-          <Main />
-          {/* <Main showFilmsByPage={this.showFilmsByPage} /> rewrite for pagination */}
-          <Footer year={CURRENT_YEAR} />
+          </Switch>
+          <Route
+            path="/"
+            render={() => {
+              return (
+                <>
+                  <Main />
+                  <Footer year={CURRENT_YEAR} />
+                </>
+              );
+            }}
+          />
         </BrowserRouter>
       </ErrorBoundary>
     );
