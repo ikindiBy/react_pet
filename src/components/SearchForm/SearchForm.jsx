@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./SearchForm.scss";
+
+import history from '../../js/history';
+
 import { SEARCH_BY } from "../../js/constants";
+
 import {
   setSearchingParams,
   showMessageEmptyParams
@@ -39,6 +44,8 @@ class SearchForm extends Component {
       this.props.fetchData(urlForRequest);
 
       this.props.setSearchingWord(this.state.selectedOption, this.state.value);
+
+      history.push(`/search/${this.state.value}&${this.state.selectedOption}`);
 
       this.setState({ value: "" });
     } else {
@@ -80,7 +87,9 @@ class SearchForm extends Component {
               Genre
             </label>
           </div>
-          <button type="submit">Search</button>
+          {/* <Link to={`/search`}> */}
+            <button type="submit">Search</button>
+          {/* </Link> */}
         </div>
       </form>
     );

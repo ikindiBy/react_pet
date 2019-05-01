@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import createBrowserHistory from "history/createBrowserHistory";
 
 import "./App.scss";
 
 import ErrorBoundary from "./ErrorBoundary.jsx";
 import NotFound from "./NotFound/NotFound";
 import HomePage from "./HomePage";
-// const history = createBrowserHistory();
+import history from '../js/history';
 
 class App extends Component {
   constructor(props) {
@@ -36,9 +35,10 @@ class App extends Component {
   render() {
     return (
       <ErrorBoundary>
-        <BrowserRouter>
+        <BrowserRouter history={history}>
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route path="/search" component={HomePage} />
             <Route path="/description" component={HomePage} />
             <Route path="*" component={NotFound} />
           </Switch>

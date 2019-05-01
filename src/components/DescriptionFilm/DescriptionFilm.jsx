@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 
 import "./DescriptionFilm.scss";
 import AverageCircle from "../AverageCircle.jsx";
-import { getReleaseYear, normalizeId } from "../../js/helpers";
+import { getReleaseYear, normalizeId, getUrlForRequestFilmById } from "../../js/helpers";
 import { stringTypeAnnotation } from "@babel/types";
-
+import { filmByIdFetchData } from "../../actions/filmsAction";
 class DescriptionFilm extends Component {
   writeGenres = (genres = []) => {
     let genresString = "";
@@ -22,7 +22,17 @@ class DescriptionFilm extends Component {
     return genresString;
   };
 
+  componentDidMount(){
+    if (!this.props.setFilms.length) {
+      const urlToGetDescribedFilm = getUrlForRequestFilmById(this.props.match.params.id);
+      this.props.fetchFilmData(urlToGetDescribedFilm);
+    }
+  }
+
   getFilmForDP = () => {
+    if (this.props.filmToDesciption.id) {
+      return this.props.filmToDesciption;
+    }
     return this.props.setFilms.find(
       film => normalizeId(film.id) === normalizeId(this.props.match.params.id)
     );
@@ -74,8 +84,15 @@ class DescriptionFilm extends Component {
 
 function mapStateToProps(state) {
   return {
-    setFilms: state.films.filmsSet
+    setFilms: state.films.filmsSet,
+    filmToDesciption: state.films.filmToDesciption
   };
 }
 
-export default connect(mapStateToProps)(DescriptionFilm);
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchFilmData: url => dispatch(filmByIdFetchData(url))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DescriptionFilm);

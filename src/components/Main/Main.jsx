@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./Main.scss";
@@ -66,7 +66,7 @@ class Main extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("----state---", state);
+  console.log("-- MAIN --state---", state);
   return {
     setFilms: state.films.filmsSet,
     searchingWord: state.search.searchingWord,

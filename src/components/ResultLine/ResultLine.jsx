@@ -23,9 +23,14 @@ class ResultLine extends Component {
     this.props.fetchData(urlForRequest);
   };
 
+  showRL = () => {
+    const className = "result-line";
+    return this.props.total ? className : className + ' hideLine';
+  }
+
   render() {
     return (
-      <div className="result-line">
+      <div className={this.showRL()}>
         <div className="result-line-wrapper">
           <div className="result-line-quantity">
             {this.props.total} movies found

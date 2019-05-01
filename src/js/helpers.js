@@ -17,6 +17,8 @@ const getUrlForRequest = (
   return `${URL_API}/movies?limit=${LIMIT_SEARCHING}&search=${searchingWord}&searchBy=${searchBy}&offset=${page}`;
 };
 
+const getUrlForRequestFilmById = (id) => `${URL_API}/movies/${id}`;
+
 const getReleaseYear = deteFromAPI => {
   if (deteFromAPI) {
     return deteFromAPI.slice(0, 4);
@@ -39,4 +41,4 @@ const normalizeId = id => {
   return +id;
 };
 
-export { getUrlForRequest, getReleaseYear, getGenres, normalizeId };
+export { getUrlForRequest, getUrlForRequestFilmById, getReleaseYear, getGenres, normalizeId };
