@@ -12,7 +12,7 @@ class Header extends Component {
       <header>
         <div className="header-wrapper">
           <div className="bgc-fill" />
-          <img src="/assets/img/header2.jpg" alt="header_title" />
+          <img className="bgc-img"  src="/assets/img/header2.jpg" alt="header_title" />
           <div className="logo-line">
             <span>logo</span>
             <Link to="/">Home</Link>

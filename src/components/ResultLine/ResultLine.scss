@@ -27,6 +27,7 @@
 
 .result-line {
   @include size(100%, 20%);
+  max-height: 40px;
   background-color: $mainContrAccentColor;
   color: $mainAccentColor;
   text-align: center;

@@ -46,11 +46,6 @@ class DescriptionFilm extends Component {
         <div className="description">
           <div className="description-wrapper">
             <div className="bgc-fill" />
-            <img
-              src="/assets/img/header.jpg"
-              alt="header_title"
-              className="image-bgc"
-            />
             <div className="description-card">
               <img src={poster_path} alt="" />
               <div className="description-content">
