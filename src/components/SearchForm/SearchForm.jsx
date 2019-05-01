@@ -45,7 +45,7 @@ class SearchForm extends Component {
 
       this.props.setSearchingWord(this.state.selectedOption, this.state.value);
 
-      history.push(`/search/${this.state.value}&${this.state.selectedOption}`);
+      history.push(`/search/${this.state.value}/${this.state.selectedOption}`);
 
       this.setState({ value: "" });
     } else {
@@ -87,9 +87,7 @@ class SearchForm extends Component {
               Genre
             </label>
           </div>
-          {/* <Link to={`/search`}> */}
             <button type="submit">Search</button>
-          {/* </Link> */}
         </div>
       </form>
     );

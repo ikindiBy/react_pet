@@ -20,7 +20,6 @@ export function setIdForDP(id) {
 }
 
 export function filmsFetchData(url) {
-  console.log('-------------- filmsFetchData');
   return dispatch => {
     fetch(url)
       .then(response => {
@@ -36,7 +35,6 @@ export function filmsFetchData(url) {
 }
 
 export function filmByIdFetchData(url) {
-  console.log('-------------- filmByIdFetchData');
   return dispatch => {
     fetch(url)
       .then(response => {

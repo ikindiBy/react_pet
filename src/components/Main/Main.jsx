@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./Main.scss";
@@ -7,6 +7,7 @@ import "./Main.scss";
 import { getUrlForRequest } from "../../js/helpers";
 import Tile from "../Tile/Tile.jsx";
 import Pagination from "../Pagination/Pagination";
+import ResultsOfSearch from "../ResultOfSearch";
 
 import { filmsFetchData } from "../../actions/filmsAction";
 
@@ -32,8 +33,8 @@ class Main extends Component {
     };
   }
 
-  showFilms = props => {
-    return props.setFilms.map(item => {
+  showFilms = () => {
+    return this.props.setFilms.map(item => {
       return (
         <Link to={`/description/${item.id}`} key={item.id}>
           <Tile film={item} />
@@ -46,15 +47,22 @@ class Main extends Component {
     return (
       <main>
         <div className="main-wrapper">
-          <h1 hidden={!this.props.showEmptyParams}>
-            Type more specific parameters of searching.
-          </h1>
-          <h1
-            hidden={!!this.props.setFilms.length || this.props.showEmptyParams}
-          >
-            No films found
-          </h1>
-          {this.showFilms(this.props)}
+        <Switch>
+            <Route exact path="/" render = {() => (
+              <>
+                <h1
+                hidden={!!this.props.setFilms.length || this.props.showEmptyParams}
+                >
+                  No films found
+                </h1>
+                <h1 hidden={!this.props.showEmptyParams}>
+                  Type more specific parameters of searching.
+                </h1>
+                {this.showFilms()}
+              </>
+            )}/>
+             <Route path="/search/:searchingWord/:searchingType" component={ResultsOfSearch} />
+          </Switch>
         </div>
         <Pagination
           amount={this.props.quantity}
