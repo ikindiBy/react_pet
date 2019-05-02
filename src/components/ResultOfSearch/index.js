@@ -2,47 +2,47 @@ import React, { Component } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import Tile from "../Tile/Tile.jsx";
+
+import { filmsFetchData } from "../../actions/filmsAction";
+import { getUrlForRequest } from "../../js/helpers";
+import NoFilmsPage from "../NoFilmsPage";
 class ResultsOfSearch extends Component {
 
     componentDidMount(){
-        console.log('----- ResultsOfSearch ------componentDidMount----', this.props.match);
-    // if (!this.props.setFilms.length) {
-      // console.log('-----Main------componentDidMount----', this.props);
-      // const urlToGetDescribedFilm = getUrlForRequestFilmById(this.props.match.params.id);
-      // this.props.fetchFilmData(urlToGetDescribedFilm);
-    // }
-  }
+        if (this.props.match && this.props.match.params) {
+            const {searchingType, searchingWord} = this.props.match.params;
+            const urlForRequest = getUrlForRequest(
+                searchingType,
+                searchingWord
+            );
+            
+            this.props.fetchData(urlForRequest);
+        }
+        
+    }
 
-//   showFilms = () => {
-//     return this.props.setFilms.map(item => {
-//       return (
-//         <Link to={`/description/${item.id}`} key={item.id}>
-//           <Tile film={item} />
-//         </Link>
-//       );
-//     });
-//   };
+    showFilms = () => {
+        return this.props.setFilms.map(item => {
+            return (
+                <Link to={`/description/${item.id}`} key={item.id}>
+                  <Tile film={item} />
+                </Link>
+            );
+        });
+    };
 
-  render() {
-    return (
-      
-        <>
-       Blalalalalalalalala
-
-       {/* {this.showFilms()} */}
-        </>
-      
- 
-    );
-  }
+    render() {
+        return <>
+          <NoFilmsPage />
+          {this.showFilms()}
+        </>;
+    }
 }
 
 function mapStateToProps(state) {
     return {
-      setFilms: state.films.filmsSet,
-      searchingWord: state.search.searchingWord,
-      searchingType: state.search.searchingType,
-      showEmptyParams: state.search.showEmptyParams
+      setFilms: state.films.filmsSet
     };
   }
   

@@ -35,7 +35,7 @@ class SearchForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    if (this.state.value) {
+    if (this.state.value.trim()) {
       const urlForRequest = getUrlForRequest(
         this.state.selectedOption,
         this.state.value
@@ -50,6 +50,7 @@ class SearchForm extends Component {
       this.setState({ value: "" });
     } else {
       this.props.showMessageEmptyParams();
+      this.setState({ value: "" });
     }
   };
 

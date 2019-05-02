@@ -19,6 +19,7 @@ class Header extends Component {
           </div>
           <Switch>
             <Route exact path="/" component={SearchForm} />
+            <Route path="/search" component={SearchForm} />
             <Route path="/description/:id" component={DescriptionFilm} />
           </Switch>
         </div>
