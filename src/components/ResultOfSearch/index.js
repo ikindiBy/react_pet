@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Tile from "../Tile/Tile.jsx";
+import Tile from "../Tile";
 
 import { filmsFetchData } from "../../actions/filmsAction";
 import { getUrlForRequest } from "../../js/helpers";

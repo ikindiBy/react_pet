@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import "./Header.scss";
 
-import SearchForm from "../SearchForm/SearchForm.jsx";
-import ResultLine from "../ResultLine/ResultLine.jsx";
-import DescriptionFilm from "../DescriptionFilm/DescriptionFilm.jsx";
+import SearchForm from "../SearchForm";
+import ResultLine from "../ResultLine";
+import DescriptionFilm from "../DescriptionFilm";
 
 class Header extends Component {
   render() {

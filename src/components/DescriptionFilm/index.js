@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import "./DescriptionFilm.scss";
-import AverageCircle from "../AverageCircle.jsx";
+import AverageCircle from "../AverageCircle";
 import { getReleaseYear, normalizeId, getUrlForRequestFilmById } from "../../js/helpers";
-import { stringTypeAnnotation } from "@babel/types";
 import { filmByIdFetchData } from "../../actions/filmsAction";
+
 class DescriptionFilm extends Component {
   writeGenres = (genres = []) => {
     let genresString = "";

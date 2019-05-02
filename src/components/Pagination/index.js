@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import PageNumber from "../PageNumber/PageNumber";
+import PageNumber from "../PageNumber";
 import "./Pagination.scss";
 import setPageAction from "../../actions/actionPage";
 import { LIMIT_SEARCHING } from "./../../js/constants";

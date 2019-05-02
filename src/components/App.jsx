@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "./App.scss";
 
-import ErrorBoundary from "./ErrorBoundary.jsx";
-import NotFound from "./NotFound/NotFound";
+import ErrorBoundary from "./ErrorBoundary";
+import NotFound from "./NotFound";
 import HomePage from "./HomePage";
 import history from '../js/history';
 

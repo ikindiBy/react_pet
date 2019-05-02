@@ -3,7 +3,7 @@ import { Route, Switch} from "react-router-dom";
 
 import "./Main.scss";
 
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../Pagination";
 import ResultsOfSearch from "../ResultOfSearch";
 
 class Main extends Component {
