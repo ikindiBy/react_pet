@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./SearchForm.scss";
 
-import history from '../../js/history';
+// import history from '../../js/history';
 
 import { SEARCH_BY } from "../../js/constants";
 
@@ -88,7 +88,7 @@ class SearchForm extends Component {
               Genre
             </label>
           </div>
-            <button type="submit">Search</button>
+          <button type="submit">Search</button>
         </div>
       </form>
     );

@@ -9,6 +9,7 @@ This project conteins:
 2. Redux as Model
 3. Jest and Enzyme for unit testing
 4. Cypress for E2E testing
+5. Server Side Rendering
 
 Materials and useful links:
 
@@ -21,4 +22,5 @@ Materials and useful links:
    npm install --unsafe-perm -g node-sass (may be it is not nessessary)
    Delete your \$HOME/.node-gyp directory and try again (may be it is not nessessary)
    b) in package.json: npm i node-sass@latest
-3.
+3. https://redux.js.org/recipes/server-rendering#server-rendering for SSR with redux
+4. for 7th task it was nessessery to do: npm install --save-dev "babel-core@^7.0.0-bridge.0"

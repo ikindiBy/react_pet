@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import configureStore from "./store/configureStore";
 
 import "./styles/style.scss";
@@ -9,11 +9,6 @@ import App from "./components/App.jsx";
 
 const root = document.getElementById("root");
 
-let store = configureStore();
+let store = configureStore(window.PRELOADED_STATE);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  root
-);
+ReactDOM.hydrate(<App Router={BrowserRouter} store={store} />, root);
