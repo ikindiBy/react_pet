@@ -1,10 +1,13 @@
 import React from "react";
+import Head from '../components/Head';
 import Link from "next/link";
+
 
 class Home extends React.Component {
   render() {
     return (
       <div>
+        <Head />
         <h1>Hello, from Home page</h1>
         <Link href="/contacts">
           <a>Contact</a>

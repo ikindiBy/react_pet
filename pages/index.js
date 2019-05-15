@@ -1,11 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
-
 import './../style.scss';
-
 import Home from './home';
-
-console.log('-------------');
 
 const App =() => (
     <div>
