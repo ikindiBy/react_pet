@@ -3,7 +3,7 @@ export function filter(state = {}, action) {
     case "SET_FILTER":
       return {
         ...state,
-        filteringType: action.payload
+        filteringType: action.payload,
       };
 
     default:

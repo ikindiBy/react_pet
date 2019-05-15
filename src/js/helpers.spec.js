@@ -1,5 +1,5 @@
 import { getRequestToAPI, getReleaseYear, getGenres } from "./helpers";
-import { STUB_DATA } from "./../js/constants";
+import { STUB_DATA } from "./constants";
 
 describe("ReleaseYear ", () => {
   it("should have correct format date", () => {

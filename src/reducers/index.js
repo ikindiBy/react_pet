@@ -7,5 +7,5 @@ import { filter } from "./filterReducer";
 export default combineReducers({
   films,
   search,
-  filter
+  filter,
 });

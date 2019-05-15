@@ -12,7 +12,7 @@ class DescriptionFilm extends Component {
     if (genres.length > 0) {
       genres.forEach((genre, i) => {
         if (i !== genres.length - 1) {
-          genresString += genre + " / ";
+          genresString += `${genre} / `;
         } else {
           genresString += genre;
         }
@@ -22,7 +22,7 @@ class DescriptionFilm extends Component {
     return genresString;
   };
 
-  componentDidMount(){
+  componentDidMount() {
     if (!this.props.setFilms.length) {
       const urlToGetDescribedFilm = getUrlForRequestFilmById(this.props.match.params.id);
       this.props.fetchFilmData(urlToGetDescribedFilm);
@@ -34,14 +34,14 @@ class DescriptionFilm extends Component {
       return this.props.filmToDesciption;
     }
     return this.props.setFilms.find(
-      film => normalizeId(film.id) === normalizeId(this.props.match.params.id)
+      film => normalizeId(film.id) === normalizeId(this.props.match.params.id),
     );
   };
 
   render() {
     const filmForDP = this.getFilmForDP();
     if (filmForDP) {
-      let {
+      const {
         title,
         poster_path,
         genres,
@@ -49,7 +49,7 @@ class DescriptionFilm extends Component {
         tagline,
         overview,
         release_date,
-        runtime
+        runtime,
       } = filmForDP;
 
       return (
@@ -85,13 +85,13 @@ class DescriptionFilm extends Component {
 function mapStateToProps(state) {
   return {
     setFilms: state.films.filmsSet,
-    filmToDesciption: state.films.filmToDesciption
+    filmToDesciption: state.films.filmToDesciption,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchFilmData: url => dispatch(filmByIdFetchData(url))
+    fetchFilmData: url => dispatch(filmByIdFetchData(url)),
   };
 }
 

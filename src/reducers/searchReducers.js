@@ -12,13 +12,13 @@ export function search(state = {}, action) {
         ...state,
         searchingWord: action.payload.word,
         searchingType: action.payload.type,
-        showEmptyParams: false
+        showEmptyParams: false,
       };
 
     case "SHOW_EMPTY_PARAMS":
       return {
         ...state,
-        showEmptyParams: true
+        showEmptyParams: true,
       };
     default:
       return state;

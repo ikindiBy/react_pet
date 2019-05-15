@@ -13,13 +13,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     overlay: true,
     historyApiFallback: true,
     contentBase: "/",
-    hot: true
+    hot: true,
   },
   plugins: [
     new webpack.SourceMapDevToolPlugin({
-      filename: "[file].map"
-    })
-  ]
+      filename: "[file].map",
+    }),
+  ],
 });
 
 module.exports = new Promise((resolve, reject) => {

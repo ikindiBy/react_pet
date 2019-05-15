@@ -5,11 +5,11 @@ class PageNumber extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chosen: false
+      chosen: false,
     };
   }
 
-  handleClick = event => {
+  handleClick = (event) => {
     this.setState({ chosen: !this.state.chosen });
     // there could be used  "event.target.textContent" but it is a string and simpler solve below
     this.props.setCurrentPage(this.props.content);

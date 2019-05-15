@@ -8,26 +8,26 @@ const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const PATHS = {
   src: path.join(__dirname, "./src"),
   dist: path.join(__dirname, "/dist"),
-  assets: "assets/"
+  assets: "assets/",
 };
 
 module.exports = {
   externals: {
-    paths: PATHS
+    paths: PATHS,
   },
 
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"]
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
 
   entry: {
-    app: PATHS.src
+    app: PATHS.src,
   },
 
   output: {
     filename: `${PATHS.assets}js/[name].js`,
     path: PATHS.dist,
-    publicPath: "/"
+    publicPath: "/",
   },
 
   module: {
@@ -42,10 +42,10 @@ module.exports = {
             "@babel/preset-react",
             "@babel/preset-typescript",
             {
-              plugins: ["@babel/plugin-proposal-class-properties"]
-            }
-          ]
-        }
+              plugins: ["@babel/plugin-proposal-class-properties"],
+            },
+          ],
+        },
       },
       {
         test: /\.s?css$/,
@@ -54,47 +54,47 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
-            options: { sourceMap: true }
+            options: { sourceMap: true },
           },
           {
             loader: "postcss-loader",
             options: {
               sourceMap: true,
               config: {
-                path: `${PATHS.src}/js/postcss.config.js`
-              }
-            }
+                path: `${PATHS.src}/js/postcss.config.js`,
+              },
+            },
           },
           {
             loader: "sass-loader",
-            options: { sourceMap: true }
-          }
-        ]
+            options: { sourceMap: true },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: "file-loader",
-        options: { name: "[name].[ext]" }
-      }
-    ]
+        options: { name: "[name].[ext]" },
+      },
+    ],
   },
   plugins: [
     new CaseSensitivePathsPlugin(),
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].css`
+      filename: `${PATHS.assets}css/[name].css`,
     }),
     new HtmlWebpackPlugin({
       hash: false,
       template: `${PATHS.src}/index.html`,
-      filename: "./index.html"
+      filename: "./index.html",
     }),
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/img`, to: `${PATHS.assets}img` },
-      { from: `${PATHS.src}/static`, to: "" }
-    ])
+      { from: `${PATHS.src}/static`, to: "" },
+    ]),
     // придумать как заюзать с нашей АПИшкой
     // new webpack.DefinePlugin({
     //   API_URL: JSON.stringify("http://api-for-project.com")
     // })
-  ]
+  ],
 };

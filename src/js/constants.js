@@ -1,11 +1,11 @@
 const SEARCH_BY = {
   TITLE: "title",
-  GENRE: "genres"
+  GENRE: "genres",
 };
 
 const FILTERS = {
   RATING: "vote_average",
-  RELEASE: "release_date"
+  RELEASE: "release_date",
 };
 
 const STUB_DATA = "unknown";
@@ -22,5 +22,5 @@ export {
   STUB_DATA,
   CURRENT_YEAR,
   LIMIT_SEARCHING,
-  URL_API
+  URL_API,
 };

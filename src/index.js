@@ -9,11 +9,11 @@ import App from "./components/App.jsx";
 
 const root = document.getElementById("root");
 
-let store = configureStore();
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  root
+  root,
 );

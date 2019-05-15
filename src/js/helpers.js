@@ -1,10 +1,15 @@
-import { SEARCH_BY, URL_API, STUB_DATA, LIMIT_SEARCHING } from "./constants";
+import {
+  SEARCH_BY,
+  URL_API,
+  STUB_DATA,
+  LIMIT_SEARCHING,
+} from "./constants";
 
 const getUrlForRequest = (
   searchBy = SEARCH_BY.TITLE,
   searchingWord,
   sortBy,
-  page = 1
+  page = 1,
 ) => {
   if (!searchingWord) {
     return undefined;
@@ -17,28 +22,32 @@ const getUrlForRequest = (
   return `${URL_API}/movies?limit=${LIMIT_SEARCHING}&search=${searchingWord}&searchBy=${searchBy}&offset=${page}`;
 };
 
-const getUrlForRequestFilmById = (id) => `${URL_API}/movies/${id}`;
+const getUrlForRequestFilmById = id => `${URL_API}/movies/${id}`;
 
-const getReleaseYear = deteFromAPI => {
+const getReleaseYear = (deteFromAPI) => {
   if (deteFromAPI) {
     return deteFromAPI.slice(0, 4);
   }
   return STUB_DATA;
 };
 
-const getGenres = genresFromAPI => {
+const getGenres = (genresFromAPI) => {
   let allGenres = "";
   if (genresFromAPI && genresFromAPI.length > 0) {
     genresFromAPI.forEach((genre, i) => {
-      allGenres = i === 0 ? genre : allGenres + ", " + genre;
+      allGenres = i === 0 ? genre : `${allGenres}, ${genre}`;
     });
     return allGenres;
   }
   return STUB_DATA;
 };
 
-const normalizeId = id => {
-  return +id;
-};
+const normalizeId = id => +id;
 
-export { getUrlForRequest, getUrlForRequestFilmById, getReleaseYear, getGenres, normalizeId };
+export {
+  getUrlForRequest,
+  getUrlForRequestFilmById,
+  getReleaseYear,
+  getGenres,
+  normalizeId,
+};

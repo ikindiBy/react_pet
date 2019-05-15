@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import PageNumber from "../PageNumber";
 import "./Pagination.scss";
 import setPageAction from "../../actions/actionPage";
-import { LIMIT_SEARCHING } from "./../../js/constants";
+import { LIMIT_SEARCHING } from "../../js/constants";
 
 class Pagination extends Component {
-  showPages = amount => {
+  showPages = (amount) => {
     let pages = 0;
 
     if (amount) {
@@ -18,16 +18,14 @@ class Pagination extends Component {
       }
     }
 
-    return new Array(pages).fill("").map((item, index) => {
-      return (
+    return new Array(pages).fill("").map((item, index) => (
         <PageNumber
           key={index + 1}
           content={index + 1}
           showFilmsByPage={this.props.showFilmsByPage}
           setCurrentPage={this.props.setCurrentPage}
         />
-      );
-    });
+    ));
   };
 
   render() {
@@ -46,13 +44,13 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setCurrentPage: page => {
+    setCurrentPage: (page) => {
       dispatch(setPageAction(page));
-    }
+    },
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Pagination);

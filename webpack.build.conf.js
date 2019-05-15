@@ -1,6 +1,6 @@
 const merge = require("webpack-merge");
-const baseWebpackConfig = require("./webpack.base.conf");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const baseWebpackConfig = require("./webpack.base.conf");
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
   mode: "production",
@@ -8,10 +8,10 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
-        cache: true
-      })
-    ]
-  }
+        cache: true,
+      }),
+    ],
+  },
 });
 
 module.exports = new Promise((resolve, reject) => {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import "./Main.scss";
 
@@ -12,7 +12,7 @@ class Main extends Component {
     this.state = {
       currentPage: 1,
       isLoading: false,
-      hasErrored: false
+      hasErrored: false,
     };
   }
 

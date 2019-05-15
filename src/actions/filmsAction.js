@@ -1,28 +1,28 @@
 export function filmsFetchDataSuccess(data) {
   return {
     type: "FILMS_FETCH_DATA_SUCCESS",
-    payload: data
+    payload: data,
   };
 }
 
 export function filmByIdFetchDataSuccess(data) {
   return {
     type: "FILM_BY_ID_FETCH_DATA_SUCCESS",
-    payload: data
+    payload: data,
   };
 }
 
 export function setIdForDP(id) {
   return {
     type: "SET_ID_FOR_DP",
-    payload: id
+    payload: id,
   };
 }
 
 export function filmsFetchData(url) {
-  return dispatch => {
+  return (dispatch) => {
     fetch(url)
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);
         }
@@ -35,9 +35,9 @@ export function filmsFetchData(url) {
 }
 
 export function filmByIdFetchData(url) {
-  return dispatch => {
+  return (dispatch) => {
     fetch(url)
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);
         }

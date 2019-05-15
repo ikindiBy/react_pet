@@ -9,7 +9,7 @@ import { setFilter } from "../../actions/filterAction";
 import { filmsFetchData } from "../../actions/filmsAction";
 
 class ResultLine extends Component {
-  handleClick = e => {
+  handleClick = (e) => {
     const filterType = e.target.dataset.name;
 
     this.props.setFilter(filterType);
@@ -17,7 +17,7 @@ class ResultLine extends Component {
     const urlForRequest = getUrlForRequest(
       this.props.searchingType,
       this.props.searchingWord,
-      filterType
+      filterType,
     );
 
     this.props.fetchData(urlForRequest);
@@ -25,7 +25,7 @@ class ResultLine extends Component {
 
   showRL = () => {
     const className = "result-line";
-    return this.props.total ? className : className + ' hideLine';
+    return this.props.total ? className : `${className} hideLine`;
   }
 
   render() {
@@ -73,18 +73,18 @@ function mapStateToProps(state) {
     filteringType: state.filter.filteringType,
     total: state.films.total,
     searchingWord: state.search.searchingWord,
-    searchingType: state.search.searchingType
+    searchingType: state.search.searchingType,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     setFilter: type => dispatch(setFilter(type)),
-    fetchData: url => dispatch(filmsFetchData(url))
+    fetchData: url => dispatch(filmsFetchData(url)),
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ResultLine);

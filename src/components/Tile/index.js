@@ -10,7 +10,7 @@ class Tile extends Component {
       poster_path,
       genres,
       vote_average,
-      release_date
+      release_date,
     } = this.props.film;
 
     return (

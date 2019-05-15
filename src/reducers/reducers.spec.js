@@ -6,17 +6,17 @@ describe("Filter reducers ", () => {
   it("SET_FILTER should set new filter param", () => {
     const action = {
       type: "SET_FILTER",
-      payload: FILTERS.RATING
+      payload: FILTERS.RATING,
     };
 
     const initialState = {
       filteringType: FILTERS.RELEASE,
-      testField: "testData"
+      testField: "testData",
     };
 
     expect(filter(initialState, action)).toEqual({
       ...initialState,
-      filteringType: FILTERS.RATING
+      filteringType: FILTERS.RATING,
     });
   });
 });
@@ -28,7 +28,7 @@ describe("Search reducers ", () => {
     initialState = {
       searchingWord: "",
       searchingType: "",
-      showEmptyParams: true
+      showEmptyParams: true,
     };
   });
 
@@ -36,31 +36,31 @@ describe("Search reducers ", () => {
     const testData = { word: "q", type: "t" };
     const action = {
       type: "SET_SEARCHING_PARAMS",
-      payload: testData
+      payload: testData,
     };
 
     expect(search(initialState, action)).toEqual({
       ...initialState,
       searchingWord: testData.word,
       searchingType: testData.type,
-      showEmptyParams: false
+      showEmptyParams: false,
     });
   });
 
   it("SHOW_EMPTY_PARAMS should set true in field showEmptyParams", () => {
     const action = {
-      type: "SHOW_EMPTY_PARAMS"
+      type: "SHOW_EMPTY_PARAMS",
     };
 
     initialState = {
       searchingWord: "tw",
       searchingType: "tt",
-      showEmptyParams: false
+      showEmptyParams: false,
     };
 
     expect(search(initialState, action)).toEqual({
       ...initialState,
-      showEmptyParams: true
+      showEmptyParams: true,
     });
   });
 });

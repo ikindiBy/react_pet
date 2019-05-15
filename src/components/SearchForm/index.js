@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./SearchForm.scss";
 
-import history from '../../js/history';
+import history from "../../js/history";
 
 import { SEARCH_BY } from "../../js/constants";
 
 import {
   setSearchingParams,
-  showMessageEmptyParams
+  showMessageEmptyParams,
 } from "../../actions/searchingAction";
 import { filmsFetchData } from "../../actions/filmsAction";
 
@@ -20,25 +20,25 @@ class SearchForm extends Component {
     super(props);
     this.state = {
       value: "",
-      selectedOption: SEARCH_BY.TITLE
+      selectedOption: SEARCH_BY.TITLE,
     };
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ value: event.target.value });
   };
 
-  handleOptionChange = event => {
+  handleOptionChange = (event) => {
     this.setState({ selectedOption: event.target.value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     if (this.state.value.trim()) {
       const urlForRequest = getUrlForRequest(
         this.state.selectedOption,
-        this.state.value
+        this.state.value,
       );
 
       this.props.fetchData(urlForRequest);
@@ -98,7 +98,7 @@ class SearchForm extends Component {
 function mapStateToProps(state) {
   return {
     searchingWord: state.searchingWord,
-    searchingType: state.searchingType
+    searchingType: state.searchingType,
   };
 }
 
@@ -106,11 +106,11 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchData: url => dispatch(filmsFetchData(url)),
     setSearchingWord: (word, type) => dispatch(setSearchingParams(word, type)),
-    showMessageEmptyParams: () => dispatch(showMessageEmptyParams())
+    showMessageEmptyParams: () => dispatch(showMessageEmptyParams()),
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(SearchForm);
