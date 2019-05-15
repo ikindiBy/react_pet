@@ -1,9 +1,29 @@
 {
     "parser": "babel-eslint",
     "rules": {
-        "max-len": [1,120, 2, {"ignoreComments": true}],
+        "max-len": [1, 120, 2, {"ignoreComments": true}],
         "semi": ["error", "always"],
-        "quotes": ["error", "double"]
+        "quotes": ["error", "double"],
+        "class-methods-use-this": [2, { "exceptMethods": [
+            "componentDidMount",
+            "componentDidUpdate",
+            "render",
+            "shouldComponentUpdate",
+            "constructor"
+                ]
+            }
+        ]
     },
-    "extends": ["airbnb-base"]
+    "extends": [
+        "airbnb-base",
+        "plugin:flowtype/recommended",
+        "plugin:react/recommended"
+    ],
+    "plugins": [
+        "flowtype"
+    ],
+    "env": {
+        "browser": true,
+        "es6": true
+    }
 }

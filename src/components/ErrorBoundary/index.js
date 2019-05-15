@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class ErrorBoundary extends Component {
 
   componentDidCatch(error, info) {
     console.log(error, info);
-  };
+  }
 
   render() {
     if (this.state.hasError) {

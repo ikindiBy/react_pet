@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
@@ -7,7 +9,7 @@ import { getReleaseYear, normalizeId, getUrlForRequestFilmById } from "../../js/
 import { filmByIdFetchData } from "../../actions/filmsAction";
 
 class DescriptionFilm extends Component {
-  writeGenres = (genres = []) => {
+  writeGenres = (genres: Array<string> = []): string => {
     let genresString = "";
     if (genres.length > 0) {
       genres.forEach((genre, i) => {

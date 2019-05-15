@@ -1,3 +1,5 @@
+// @flow
+
 import {
   SEARCH_BY,
   URL_API,
@@ -6,32 +8,38 @@ import {
 } from "./constants";
 
 const getUrlForRequest = (
-  searchBy = SEARCH_BY.TITLE,
-  searchingWord,
-  sortBy,
-  page = 1,
-) => {
+  searchBy: string = SEARCH_BY.TITLE,
+  searchingWord: string | number,
+  sortBy: string,
+  page: number = 1,
+): string | void => {
   if (!searchingWord) {
     return undefined;
   }
 
   if (sortBy) {
-    return `${URL_API}/movies?sortBy=${sortBy}&sortOrder=desc&limit=${LIMIT_SEARCHING}&search=${searchingWord}&searchBy=${searchBy}&offset=${page}`;
+    return `${URL_API}/movies?
+    sortBy=${sortBy}
+    &sortOrder=desc
+    &limit=${LIMIT_SEARCHING}
+    &search=${searchingWord}
+    &searchBy=${searchBy}
+    &offset=${page}`;
   }
 
   return `${URL_API}/movies?limit=${LIMIT_SEARCHING}&search=${searchingWord}&searchBy=${searchBy}&offset=${page}`;
 };
 
-const getUrlForRequestFilmById = id => `${URL_API}/movies/${id}`;
+const getUrlForRequestFilmById = (id: string | number): string => `${URL_API}/movies/${id}`;
 
-const getReleaseYear = (deteFromAPI) => {
-  if (deteFromAPI) {
-    return deteFromAPI.slice(0, 4);
+const getReleaseYear = (dateFromAPI: string): string => {
+  if (dateFromAPI) {
+    return dateFromAPI.slice(0, 4);
   }
   return STUB_DATA;
 };
 
-const getGenres = (genresFromAPI) => {
+const getGenres = (genresFromAPI: Array<string>): string => {
   let allGenres = "";
   if (genresFromAPI && genresFromAPI.length > 0) {
     genresFromAPI.forEach((genre, i) => {
@@ -42,7 +50,7 @@ const getGenres = (genresFromAPI) => {
   return STUB_DATA;
 };
 
-const normalizeId = id => +id;
+const normalizeId = (id: string | number): number => +id;
 
 export {
   getUrlForRequest,
