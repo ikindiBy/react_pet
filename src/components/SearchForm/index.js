@@ -12,8 +12,9 @@ import {
   showMessageEmptyParams,
 } from "../../actions/searchingAction";
 import { filmsFetchData } from "../../actions/filmsAction";
-
 import { getUrlForRequest } from "../../js/helpers";
+
+import Button from "../Button";
 
 class SearchForm extends Component {
   constructor(props) {
@@ -88,7 +89,7 @@ class SearchForm extends Component {
               Genre
             </label>
           </div>
-            <button type="submit">Search</button>
+            <Button type="submit" name="Search" clickHandler={this.handleSubmit}/>
         </div>
       </form>
     );

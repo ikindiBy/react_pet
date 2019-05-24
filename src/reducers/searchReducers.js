@@ -1,10 +1,3 @@
-// const initialState = {
-//   searchingWord: "ocean",
-//   searchingType: SEARCH_BY.TITLE,
-//   showNoResult: false,
-//   showEmptyParams: false
-// };
-
 export function search(state = {}, action) {
   switch (action.type) {
     case "SET_SEARCHING_PARAMS":
