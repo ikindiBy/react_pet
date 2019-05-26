@@ -9,7 +9,9 @@
     "dev": "webpack-dev-server --open --config webpack.dev.conf.js",
     "build": "webpack --config ./webpack.build.conf.js",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore --fix",
-    "flow": "flow"
+    "flow": "flow",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "browserslist": [
     "> 1%",
@@ -24,6 +26,11 @@
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-info": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@storybook/react": "^5.0.11",
     "autoprefixer": "^9.5.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.0.1",

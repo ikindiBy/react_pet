@@ -1,3 +1,4 @@
+// @ flow
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -9,7 +10,7 @@ import { SEARCH_BY } from "../../js/constants";
 
 import {
   setSearchingParams,
-  showMessageEmptyParams,
+  showMessageEmptyParams
 } from "../../actions/searchingAction";
 import { filmsFetchData } from "../../actions/filmsAction";
 import { getUrlForRequest } from "../../js/helpers";
@@ -21,25 +22,25 @@ class SearchForm extends Component {
     super(props);
     this.state = {
       value: "",
-      selectedOption: SEARCH_BY.TITLE,
+      selectedOption: SEARCH_BY.TITLE
     };
   }
 
-  handleChange = (event) => {
+  handleChange = (event: SyntheticEvent<HTMLButtonElement>) => {
     this.setState({ value: event.target.value });
   };
 
-  handleOptionChange = (event) => {
+  handleOptionChange = (event: SyntheticEvent<HTMLButtonElement>) => {
     this.setState({ selectedOption: event.target.value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = (event: SyntheticEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     if (this.state.value.trim()) {
       const urlForRequest = getUrlForRequest(
         this.state.selectedOption,
-        this.state.value,
+        this.state.value
       );
 
       this.props.fetchData(urlForRequest);
@@ -89,7 +90,11 @@ class SearchForm extends Component {
               Genre
             </label>
           </div>
-            <Button type="submit" name="Search" clickHandler={this.handleSubmit}/>
+          <Button
+            type="submit"
+            name="Search"
+            clickHandler={this.handleSubmit}
+          />
         </div>
       </form>
     );
@@ -99,7 +104,7 @@ class SearchForm extends Component {
 function mapStateToProps(state) {
   return {
     searchingWord: state.searchingWord,
-    searchingType: state.searchingType,
+    searchingType: state.searchingType
   };
 }
 
@@ -107,11 +112,11 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchData: url => dispatch(filmsFetchData(url)),
     setSearchingWord: (word, type) => dispatch(setSearchingParams(word, type)),
-    showMessageEmptyParams: () => dispatch(showMessageEmptyParams()),
+    showMessageEmptyParams: () => dispatch(showMessageEmptyParams())
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SearchForm);
