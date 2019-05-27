@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { createSelector } from "reselect";
 
 import Tile from "../Tile";
 
@@ -35,9 +36,14 @@ class ResultsOfSearch extends Component {
   }
 }
 
+const filmsSelector = createSelector(
+  [state => state.films.filmsSet],
+  filmsSet => filmsSet
+);
+
 function mapStateToProps(state) {
   return {
-    setFilms: state.films.filmsSet
+    setFilms: filmsSelector(state)
   };
 }
 

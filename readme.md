@@ -22,4 +22,4 @@ Materials and useful links:
    Delete your \$HOME/.node-gyp directory and try again (may be it is not nessessary)
    b) in package.json: npm i node-sass@latest
 3. To solve problem with hightlight in VSCode fore Flow syntax we can add /"javascript.validate.enable": false/ in file settings.json in .vscode folder for project;
-4. 
+4. reselect - https://github.com/devSchacht/translations/blob/master/articles/reselect-selector-library-for-redux/readme.md
