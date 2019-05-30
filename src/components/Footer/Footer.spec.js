@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import { Footer } from "./Footer.jsx";
+import Footer from "./index";
 // import Adapter from "enzyme-adapter-react-16";
 
 describe("Footer component", () => {

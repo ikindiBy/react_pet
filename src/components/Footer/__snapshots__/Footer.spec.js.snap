@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component should be render correctly 1`] = `
+<footer>
+  <div
+    className="footer-wrapper "
+  >
+    <div
+      className="logo-line"
+    >
+      logo
+    </div>
+    <p>
+      Aliaksandr Filitaryn, Epam, 
+      2019
+    </p>
+  </div>
+</footer>
+`;

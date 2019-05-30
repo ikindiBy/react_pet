@@ -3,7 +3,7 @@
 /** Used in jest.config.js */
 
 import { configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import Adapter from "enzyme-adapter-react-16.3";
 import { createSerializer } from "enzyme-to-json";
 
 expect.addSnapshotSerializer(createSerializer({ mode: "deep" }));
